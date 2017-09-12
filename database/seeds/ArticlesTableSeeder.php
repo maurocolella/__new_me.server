@@ -13,9 +13,10 @@ class ArticlesTableSeeder extends Seeder
 		$faker = \Faker\Factory::create();
 
 		// And now, let's create a few articles in our database:
-		for ($i = 0; $i < 50; $i++) {
+		for ($i = 0; $i < 5; $i++) {
 			Article::create([
 				'title' => $faker->sentence,
+				'slug' => $faker->word,
 				'body' => $faker->paragraph,
 			]);
 		}
