@@ -24,3 +24,10 @@ Route::get('articles/{article}', 'ArticleController@show');
 // Route::post('articles', 'ArticleController@store');
 // Route::put('articles/{article}', 'ArticleController@update');
 // Route::delete('articles/{article}', 'ArticleController@delete');
+
+Route::get('skills', 'SkillController@index');
+Route::get('skills/{skill}', 'SkillController@show');
+// Route::post('articles', 'ArticleController@store');
+// Route::put('articles/{article}', 'ArticleController@update');
+// Route::delete('articles/{article}', 'ArticleController@delete');
+
