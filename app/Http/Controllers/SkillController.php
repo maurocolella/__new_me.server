@@ -10,7 +10,7 @@ class SkillController extends Controller
 {
 	public function index()
 	{
-		return Skill::all();
+		return Skill::orderBy('rating', 'desc')->get();
 	}
 
 	public function show(Skill $skill)
