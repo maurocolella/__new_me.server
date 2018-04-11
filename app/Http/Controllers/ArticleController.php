@@ -8,6 +8,10 @@ use App\Article;
 
 class ArticleController extends Controller
 {
+	/**
+	 * List all articles.
+	 * @return [[Type]] [[Description]]
+	 */
 	public function index()
 	{
 		return Article::all();
