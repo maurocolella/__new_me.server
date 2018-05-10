@@ -31,3 +31,6 @@ Route::get('skills/{skill}', 'SkillController@show');
 // Route::put('articles/{article}', 'ArticleController@update');
 // Route::delete('articles/{article}', 'ArticleController@delete');
 
+Route::get('resume', 'ResumeEntryController@index');
+Route::get('resume/{entry}', 'ResumeEntryController@show');
+
