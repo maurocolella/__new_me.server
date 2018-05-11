@@ -7,4 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     protected $fillable = ['title', 'rating'];
+
+    /**
+     * Get related skills.
+     */
+    public function related_to()
+    {
+        return $this->belongsToMany('App\Skill', null, 'skill_id', 'related_id');
+    }
+
+    /**
+     * Get related skills.
+     */
+    public function related_from()
+    {
+        return $this->belongsToMany('App\Skill', null, 'related_id', 'skill_id');
+    }
 }

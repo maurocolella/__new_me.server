@@ -12,7 +12,7 @@ class JAPIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        App::bind('japi', function() {
+        App::bind('japi', function () {
             return new \App\Helpers\API;
         });
     }

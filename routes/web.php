@@ -12,24 +12,24 @@
 */
 
 Route::get('/', function () {
-	$routes = [];
-	foreach (\Route::getRoutes()->getIterator() as $route){
-		if (strpos($route->action['middleware'], 'api') !== false){
-			$descriptor = new \stdClass;
+    $routes = [];
+    foreach (\Route::getRoutes()->getIterator() as $route) {
+        if (strpos($route->action['middleware'], 'api') !== false) {
+            $descriptor = new \stdClass;
 
-			$descriptor->uri = $route->uri;
-			$descriptor->methods = $route->methods;
-			$descriptor->action = $route->action['controller'];
+            $descriptor->uri = $route->uri;
+            $descriptor->methods = $route->methods;
+            $descriptor->action = $route->action['controller'];
 
-			$members = explode('@', $descriptor->action);
-			$method = new ReflectionMethod($members[0], $members[1]);
+            $members = explode('@', $descriptor->action);
+            $method = new ReflectionMethod($members[0], $members[1]);
 
-			$descriptor->description = trim($method->getDocComment());
-			$descriptor->parameters = $method->getParameters();
+            $descriptor->description = trim($method->getDocComment());
+            $descriptor->parameters = $method->getParameters();
 
-			$routes[] = $descriptor;
-		}
-	}
+            $routes[] = $descriptor;
+        }
+    }
 
-	return view('api', compact('routes'));
+    return view('api', compact('routes'));
 });

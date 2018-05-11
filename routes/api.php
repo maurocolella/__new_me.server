@@ -16,7 +16,7 @@ use App\Http\Controllers\ArticleController;
 */
 
 /* Route::middleware('auth:api')->get('/user', function (Request $request) {
-	return $request->user();
+    return $request->user();
 }); */
 
 Route::get('articles', 'ArticleController@index');
@@ -33,4 +33,3 @@ Route::get('skills/{skill}', 'SkillController@show');
 
 Route::get('resume', 'ResumeEntryController@index');
 Route::get('resume/{entry}', 'ResumeEntryController@show');
-
