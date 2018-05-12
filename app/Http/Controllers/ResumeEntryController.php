@@ -11,8 +11,8 @@ use App\Facades\JAPI;
 class ResumeEntryController extends Controller
 {
     /**
-     * List all articles.
-     * @return [[Type]] [[Description]]
+     * List all resume entries.
+     * @return resource List of resume entries in JSON API format.
      */
     public function index()
     {
@@ -23,6 +23,11 @@ class ResumeEntryController extends Controller
             ->header('Content-Type', 'application/vnd.api+json');
     }
 
+    /**
+     * Show one resume entry.
+     * @param  resource ResumeEntry $entry
+     * @return resource Single resume entry in JSON API format.
+     */
     public function show(ResumeEntry $entry)
     {
         $tasks = $entry->tasks()->get();
