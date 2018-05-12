@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
     /**
      * List all articles.
-     * @return [[Type]] [[Description]]
+     * @return resource List of articles in JSON API format.
      */
     public function index()
     {
@@ -23,6 +23,11 @@ class ArticleController extends Controller
             ->header('Content-Type', 'application/vnd.api+json');
     }
 
+    /**
+     * Show one article.
+     * @param  resource Article $article
+     * @return resource Single article in JSON API format.
+     */
     public function show(Article $article)
     {
         $payload = JAPI::marshallEntry($article, 'article');

@@ -10,6 +10,10 @@ use App\Facades\JAPI;
 
 class SkillController extends Controller
 {
+    /**
+     * List all skills.
+     * @return resource List of skills in JSON API format.
+     */
     public function index()
     {
         $dataset = Skill::orderBy('title', 'asc')->get();
@@ -19,6 +23,11 @@ class SkillController extends Controller
             ->header('Content-Type', 'application/vnd.api+json');
     }
 
+    /**
+     * Show one skill.
+     * @param  resource Skill $skill
+     * @return resource Single skill in JSON API format.
+     */
     public function show(Skill $skill)
     {
         $payload = JAPI::marshallEntry($skill, 'skill');
