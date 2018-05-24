@@ -14,6 +14,10 @@ class API
      */
     public function marshallEntry($item, $type)
     {
+        if($item === NULL){
+            return new \stdClass;
+        }
+
         $document = new \stdClass;
 
         // Detect relationships
@@ -43,6 +47,10 @@ class API
      */
     public function marshallDataset($dataSet, $type)
     {
+        if(empty($dataSet)){
+            return new \stdClass;
+        }
+
         $payload = new \stdClass;
         $payload->data = array();
         $acc = array();

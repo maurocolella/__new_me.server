@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Article;
-use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +31,5 @@ Route::get('skills/{skill}', 'SkillController@show');
 
 Route::get('resume', 'ResumeEntryController@index');
 Route::get('resume/{entry}', 'ResumeEntryController@show');
+
+Route::get('profile', 'ProfileController@show');
