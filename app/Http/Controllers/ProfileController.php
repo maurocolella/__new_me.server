@@ -12,8 +12,7 @@ class ProfileController extends Controller
 {
     /**
      * Show profile.
-     * @param  resource Profile $profile
-     * @return resource Single article in JSON API format.
+     * @return resource Profile in JSON API format.
      */
     public function show()
     {
