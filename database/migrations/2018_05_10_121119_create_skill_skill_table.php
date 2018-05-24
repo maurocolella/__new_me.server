@@ -16,11 +16,11 @@ class CreateSkillSkillTable extends Migration
 		Schema::create('skill_skill', function (Blueprint $table) {
 			$table->increments('id');
 
-			$table->integer('skill_id')->unsigned()->nullable();
+			$table->integer('skill_id')->unsigned()->nullable(FALSE);
 			$table->foreign('skill_id')->references('id')
 				->on('skills')->onDelete('cascade');
 
-			$table->integer('related_id')->unsigned()->nullable();
+			$table->integer('related_id')->unsigned()->nullable(FALSE);
 			$table->foreign('related_id')->references('id')
 				->on('skills')->onDelete('cascade');
 
