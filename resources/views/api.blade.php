@@ -38,11 +38,17 @@
 
       th {
         background-color: #c3cbcf;
-        padding: 10px;
+        text-align: center;
+        text-transform: uppercase;
       }
 
       td {
-        text-align: center;
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 1rem;
       }
 
       .docblock {
@@ -99,18 +105,19 @@
             </td>
             <td>
               <ul>
-              @foreach($route->parameters as $parameter)
+              @foreach($route->parameters as $key => $parameter)
                 <li>
-                  <strong>
-                    {{ $parameter->name }} ({{ $parameter->getType() }})
-                  </strong>
+                  <strong>{{ is_string($key) ? $key : '' }}</strong> -
+                  {{ $parameter->name }} ({{ $parameter->getType() }})
                 </li>
               @endforeach
               </ul>
             </td>
             <td>
               <div class="docblock">
-                {!! nl2br(preg_replace('/[\*]+/', '', $route->description)) !!}
+                @foreach($route->descriptions as $description)
+                    {{ $description }}<br />
+                @endforeach
               </div>
             </td>
           </tr>

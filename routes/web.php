@@ -13,19 +13,45 @@
 
 Route::get('/', function () {
     $routes = [];
-    foreach (\Route::getRoutes()->getIterator() as $route) {
+    $factory  = \phpDocumentor\Reflection\DocBlockFactory::createInstance();
+    $iterator = \Route::getRoutes()->getIterator();
+    $iterator->asort();
+
+    foreach ($iterator as $route) {
         if (strpos($route->action['middleware'], 'api') !== false) {
             $descriptor = new \stdClass;
 
+            // Parse uri, http methods, controller mapping
             $descriptor->uri = $route->uri;
             $descriptor->methods = $route->methods;
             $descriptor->action = $route->action['controller'];
 
+            // Parse controller method
             $members = explode('@', $descriptor->action);
             $method = new ReflectionMethod($members[0], $members[1]);
 
-            $descriptor->description = trim($method->getDocComment());
-            $descriptor->parameters = $method->getParameters();
+            // Parse docblock
+            $docblock = $factory->create($method);
+            $description = $docblock->getTags();
+            array_unshift($description, $docblock->getSummary());
+            $descriptor->descriptions = $description;
+
+            // Parse parameters
+            $parameters = $method->getParameters();
+            $formattedParams = array();
+
+            foreach($parameters as $parameter){
+                $type = $parameter->getType()->__toString();
+                $dummy = new $type;
+                if(is_a($dummy, 'Illuminate\Database\Eloquent\Model')){
+                    $formattedParams[$dummy->getRouteKeyName()] = $parameter;
+                }
+                else {
+                    $formattedParams[] = $parameter;
+                }
+            }
+
+            $descriptor->parameters = $formattedParams;
 
             $routes[] = $descriptor;
         }
