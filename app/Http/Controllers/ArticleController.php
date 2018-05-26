@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $dataset = Article::all();
+        $dataset = Article::all()->sortBy('slug');
         $payload = JAPI::marshallDataset($dataset, 'article');
 
         return (new Response(json_encode($payload), 200))
