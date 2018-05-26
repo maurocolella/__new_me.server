@@ -16,7 +16,7 @@ class ResumeEntryController extends Controller
      */
     public function index()
     {
-        $dataset = ResumeEntry::all()->sortBy('end_date');
+        $dataset = ResumeEntry::all()->sortByDesc('end_date');
         $payload = JAPI::marshallDataset($dataset, 'resumeentry');
 
         return (new Response(json_encode($payload), 200))
