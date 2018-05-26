@@ -8,6 +8,6 @@ class Language extends Model
 {
     public function profile()
     {
-        return $this->belongsTo('App\Profile');
+        return $this->belongsTo('App\Profile')->withTimestamps();
     }
 }

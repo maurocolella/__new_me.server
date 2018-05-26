@@ -14,6 +14,6 @@ class ResumeEntry extends Model
      */
     public function tasks()
     {
-        return $this->belongsToMany('App\Task');
+        return $this->belongsToMany('App\Task')->withTimestamps();
     }
 }

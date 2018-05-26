@@ -13,7 +13,7 @@ class Skill extends Model
      */
     public function related_to()
     {
-        return $this->belongsToMany('App\Skill', null, 'skill_id', 'related_id');
+        return $this->belongsToMany('App\Skill', null, 'skill_id', 'related_id')->withTimestamps();
     }
 
     /**
@@ -21,6 +21,6 @@ class Skill extends Model
      */
     public function related_from()
     {
-        return $this->belongsToMany('App\Skill', null, 'related_id', 'skill_id');
+        return $this->belongsToMany('App\Skill', null, 'related_id', 'skill_id')->withTimestamps();
     }
 }
