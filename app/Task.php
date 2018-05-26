@@ -10,6 +10,6 @@ class Task extends Model
     //
     public function resumeentries()
     {
-        return $this->belongsToMany('App\ResumeEntry');
+        return $this->belongsToMany('App\ResumeEntry')->withTimestamps();
     }
 }

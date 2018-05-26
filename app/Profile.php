@@ -10,11 +10,11 @@ class Profile extends Model
 
     public function languages()
     {
-        return $this->hasMany('App\Language');
+        return $this->hasMany('App\Language')->withTimestamps();
     }
 
     public function certifications()
     {
-        return $this->hasMany('App\Certification');
+        return $this->hasMany('App\Certification')->withTimestamps();
     }
 }
