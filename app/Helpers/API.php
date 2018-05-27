@@ -120,7 +120,7 @@ class API
             }
 
             if ($isRelation) {
-                $collection = $resource->{$propName}()->get();
+                $collection = $resource->{$propName}()->orderBy('created_at')->get();
 
                 if (count($collection) > 0) {
                     // Add relationship identifier
