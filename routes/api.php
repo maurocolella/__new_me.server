@@ -32,4 +32,7 @@ Route::get('skills/{skill}', 'SkillController@show');
 Route::get('resume', 'ResumeEntryController@index');
 Route::get('resume/{entry}', 'ResumeEntryController@show');
 
+Route::get('works', 'WorkController@index');
+Route::get('works/{work}', 'WorkController@show');
+
 Route::get('profile', 'ProfileController@show');
