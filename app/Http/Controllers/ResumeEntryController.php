@@ -30,7 +30,6 @@ class ResumeEntryController extends Controller
      */
     public function show(ResumeEntry $entry)
     {
-        $tasks = $entry->tasks()->get();
         $payload = JAPI::marshallEntry($entry, 'resumeentry');
 
         return (new Response(json_encode($payload), 200))
