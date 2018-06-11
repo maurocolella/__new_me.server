@@ -12,9 +12,4 @@ class Task extends Model
     {
         return $this->belongsToMany('App\ResumeEntry')->withTimestamps();
     }
-
-    public function works()
-    {
-        return $this->belongsToMany('App\Work', 'work_task')->withTimestamps();
-    }
 }

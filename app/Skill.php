@@ -23,4 +23,12 @@ class Skill extends Model
     {
         return $this->belongsToMany('App\Skill', null, 'related_id', 'skill_id')->withTimestamps();
     }
+
+    /**
+     * Get related works.
+     */
+    public function works()
+    {
+        return $this->belongsToMany('App\Work', 'work_skill')->withTimestamps();
+    }
 }

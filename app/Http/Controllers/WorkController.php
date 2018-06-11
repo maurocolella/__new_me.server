@@ -16,7 +16,7 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $dataset = Work::all()->sortByDesc('end_date');
+        $dataset = Work::all()->sortBy('position');
         $payload = JAPI::marshallDataset($dataset, 'work');
 
         return (new Response(json_encode($payload), 200))
