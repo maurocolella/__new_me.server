@@ -8,9 +8,9 @@ class Work extends Model
 {
     protected $fillable = ['title', 'start_date', 'end_date', 'description'];
 
-    public function tasks()
+    public function skills()
     {
-        return $this->belongsToMany('App\Task', 'work_task')->withTimestamps();
+        return $this->belongsToMany('App\Skill', 'work_skill')->withTimestamps();
     }
 
     public function links()
