@@ -2,10 +2,13 @@
 
 namespace App;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
 class Work extends Model
 {
+    // use Cachable;
+
     protected $fillable = ['title', 'start_date', 'end_date', 'description'];
 
     public function skills()
