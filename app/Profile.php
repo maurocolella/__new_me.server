@@ -15,6 +15,6 @@ class Profile extends Model
 
     public function certifications()
     {
-        return $this->hasMany('App\Certification');
+        return $this->hasMany('App\Certification')->orderBy('id');
     }
 }
