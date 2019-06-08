@@ -18,7 +18,7 @@ Route::get('/', function () {
     $iterator->asort();
 
     foreach ($iterator as $route) {
-        if (strpos($route->action['middleware'], 'api') !== false) {
+        if (in_array('api', $route->action['middleware']) !== false) {
             $descriptor = new \stdClass;
 
             // Parse uri, http methods, controller mapping
